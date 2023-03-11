@@ -14,9 +14,9 @@ const db = knex({
   client: 'pg',
   connection: {
     host : '127.0.0.1',
-    user : 'postgres',
-    password : 'test',
-    database : 'smart-brain'
+    user : 'vinayak_rathore07',
+    password : 'NEbL4K2wiPWSeJTn4sdegzkTG3CEnps6',
+    database : 'facerecogniton_db'
   }
 });
 
