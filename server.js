@@ -16,13 +16,10 @@ const db = knex({
 
   connection: {
 
-    host : '127.0.0.1',
+    connectionString : process.env.DATABASE_URL,
+    ssl: true,
 
-    user : 'postgres',
-
-    password : 'test',
-
-    database : 'smart-brain'
+   
 
   }
 
