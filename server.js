@@ -20,6 +20,10 @@ const db = knex({
   }
 });
 
+db.raw('SELECT 1')
+  .then(() => console.log('DB connection successful'))
+  .catch((err) => console.error('DB connection error:', err));
+
 
 const app = express();
 
