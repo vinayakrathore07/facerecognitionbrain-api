@@ -28,7 +28,8 @@ db.raw('SELECT 1')
 const app = express();
 
 app.use(cors())
-app.use(express.json());
+app.use(bodyParser.json());
+//app.use(express.json());
 
 app.get('/', (req, res)=> {
 	res.send(database.users);
