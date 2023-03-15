@@ -22,6 +22,8 @@ client: 'pg',
   }
 });
 
+module.exports = db;
+
 const app = express();
 
 app.use(cors())
