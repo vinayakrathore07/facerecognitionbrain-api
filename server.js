@@ -11,34 +11,38 @@ const image = require('./controllers/image');
 
 
 const db = knex({
-  client: 'pg',
-  connection: {
-    host: 'dpg-cg5ba2bhp8u9l20imja0-a',
-    port: 5432,
-    database: 'facerecogniton_db',
-    user: 'vinayak_rathore07',
-    password: 'NEbL4K2wiPWSeJTn4sdegzkTG3CEnps6',
-    ssl: true
-  }
-});
 
+  client: 'pg',
+
+  connection: {
+
+    connectionString : process.env.DATABASE_URL,
+    ssl: true,
+
+   
+
+  }
+
+});
 
 
 const app = express();
 
 app.use(cors())
-app.use(express.json());
+app.use(bodyParser.json());
+
+// app.use(express.json());
 
 app.get('/', (req, res)=> {
-	res.send(db.users)
+	res.send(database.users);
 })
 
-app.post('/signin', signin.handleSignin(db, bcrypt))
-app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt) })
-app.get('/profile/:id', (req, res) => { profile.handleProfileGet(req, res, db)})
-app.put('/image', (req, res) => { image.handleImage(req, res, db)})
-app.post('/imageurl', (req, res) => { image.handleApiCall(req, res)})
-
+app.post('/signin',(req, res)=> {signin.handleSignin(req, res, db, bcrypt)})
+app.post('/register',(req, res) => {register.handleRegister(req, res, db ,bcrypt)})
+app.get ('/profile/:id', (req, res) => {profile.handleProfileGet(req,res,db)})
+app.put('/image', (req,res)=> {image.handleImage(req,res,db )})
+app.post('/imageurl', (req,res)=> {image.handleApiCall(req,res)})
 app.listen(process.env.PORT || 3000,()=>{
 	console.log('app is running on port ${process.env.PORT}');
 })
+
