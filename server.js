@@ -13,16 +13,13 @@ const image = require('./controllers/image');
 const db = knex({
   client: 'pg',
   connection: {
-    connectionString: process.env.DATABASE_URL,
+    connectionString: process.env.INTERNAL_DATABASE_URL,
     ssl: {
       rejectUnauthorized: false
     }
   }
 });
 
-db.raw('SELECT 1')
-  .then(() => console.log('DB connection successful'))
-  .catch((err) => console.error('DB connection error:', err));
 
 
 const app = express();
